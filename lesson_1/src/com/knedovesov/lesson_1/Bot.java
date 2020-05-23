@@ -1,22 +1,40 @@
 package com.knedovesov.lesson_1;
 
-public class Bot implements Action {
-    private static final int MAXRUN = 1000;
-    private static final int MAXJUMP = 10;
-    protected final String TYPE = "Робот";
+public class Bot implements Members {
+    private int maxLength;
+    private int maxJump;
     private String name;
+    private boolean checkWin = true;
 
-    public Bot(String name) {
+    public Bot(String name, int maxLength, int maxJump) {
         this.name = name;
+        this.maxLength = maxLength;
+        this.maxJump = maxJump;
+    }
+
+
+    @Override
+    public int getMaxJump() {
+        return maxJump;
     }
 
     @Override
-    public boolean run(RunTrack runTrack) {
-        return runTrack.getLength() <= MAXRUN;
+    public int getMaxLength() {
+        return maxLength;
     }
 
     @Override
-    public boolean jump(Wall wall) {
-        return wall.getHeight() <= MAXJUMP;
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean getCheckWin() {
+        return checkWin;
+    }
+
+    @Override
+    public void checkWin(boolean checkWin) {
+        this.checkWin = checkWin;
     }
 }

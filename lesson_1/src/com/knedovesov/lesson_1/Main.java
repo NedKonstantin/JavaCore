@@ -3,69 +3,29 @@ package com.knedovesov.lesson_1;
 public class Main {
 
     public static void main(String[] args) {
-	Human human = new Human("Вася");
-	Cat cat = new Cat("Барсик");
-	Bot bot = new Bot("Андроид");
-	RunTrack runTrack = new RunTrack();
-	Wall wall = new Wall();
+    	Members human = new Human("Вася", 500, 5);
+    	Members cat = new Cat("Барсик", 150, 11);
+    	Members bot = new Bot("Вертер", 1000, 25);
 
-	Object[] arrayTeam = {human, cat, bot};
-	Object[] arrayHurdle = {runTrack, wall};
+    	Barrier track_1 = new Track();
+    	Barrier wall_1 = new Wall();
+    	Barrier track_2 = new Track();
+    	Barrier wall_2 = new Wall();
 
-	System.out.println("Дистанция для бега " + runTrack.getLength());
-	System.out.println("Высота для прыжка " + wall.getHeight());
+    	Members[] members = {human, cat, bot};
+    	Barrier[] barriers = {track_1, wall_1, track_2, wall_2};
 
-		for (int i = 0; i < arrayTeam.length; i++) {
-			for (int j = 0; j < arrayHurdle.length; j++) {
-				if (arrayHurdle[j] instanceof RunTrack){
-					if (arrayTeam[i] instanceof Human) {
-						if (((Human) arrayTeam[i]).run((RunTrack) arrayHurdle[j])) {
-							System.out.println(((Human) arrayTeam[i]).TYPE + " преодолен дистанцию");
-						} else {
-							System.out.println(((Human) arrayTeam[i]).TYPE + " сошел с дистанции");
-							break;
-						}
-					} else if (arrayTeam[i] instanceof Cat) {
-						if (((Cat) arrayTeam[i]).run((RunTrack) arrayHurdle[j])) {
-							System.out.println(((Cat) arrayTeam[i]).TYPE + " преодолел дистанцию");
-						} else {
-							System.out.println(((Cat) arrayTeam[i]).TYPE + " сошел с дистанции");
-							break;
-						}
-					} else if (arrayTeam[i] instanceof Bot) {
-						if (((Bot) arrayTeam[i]).run((RunTrack) arrayHurdle[j])) {
-							System.out.println(((Bot) arrayTeam[i]).TYPE + " преодолел дистанцию");
-						} else {
-							System.out.println(((Bot) arrayTeam[i]).TYPE + " сошел с дистанции");
-							break;
-						}
-						}
-					}
-				 if (arrayHurdle[j] instanceof Wall) {
-					if (arrayTeam[i] instanceof Human) {
-						if (((Human) arrayTeam[i]).jump((Wall) arrayHurdle[j])) {
-							System.out.println(((Human) arrayTeam[i]).TYPE + " прыгнул");
-						} else {
-							System.out.println(((Human) arrayTeam[i]).TYPE + " сошел с дистанции");
-							break;
-						}
-					} else if (arrayTeam[i] instanceof Cat) {
-						if (((Cat) arrayTeam[i]).jump((Wall) arrayHurdle[j])) {
-							System.out.println(((Cat) arrayTeam[i]).TYPE + " прыгнул");
-						} else {
-							System.out.println(((Cat) arrayTeam[i]).TYPE + " сошел с дистанции");
-							break;
-						}
-					} else if (arrayTeam[i] instanceof Bot) {
-						if (((Bot) arrayTeam[i]).jump((Wall) arrayHurdle[j])) {
-							System.out.println(((Bot) arrayTeam[i]).TYPE + " прыгнул");
-						} else {
-							System.out.println(((Bot) arrayTeam[i]).TYPE + " сошел с дистанции");
-							break;}
-					}
-				}
-				}
-
+    	for (Members m: members) {
+    		for (Barrier b: barriers){
+				if(!m.getCheckWin()) break;
+    			if(b.checkOvercome(m)) {
+					System.out.println(m.getName() + " прошел препятствие!");
+				} else {
+					System.out.println(m.getName() + " выбыл из соревнований");
+					m.checkWin(b.checkOvercome(m));
+    			}
 			}
 		}
+	}
+
 }

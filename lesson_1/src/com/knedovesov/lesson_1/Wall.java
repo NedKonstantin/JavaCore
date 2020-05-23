@@ -2,9 +2,8 @@ package com.knedovesov.lesson_1;
 
 import java.util.Random;
 
-public class Wall {
+public class Wall implements Barrier {
     private int height;
-    private final Random random = new Random();
 
     public Wall() {
         setHeight();
@@ -15,6 +14,12 @@ public class Wall {
     }
 
     public void setHeight() {
+        final Random random = new Random();
         this.height = random.nextInt(50);
+    }
+
+    @Override
+    public boolean checkOvercome(Members members) {
+        return members.getMaxJump() >= height;
     }
 }

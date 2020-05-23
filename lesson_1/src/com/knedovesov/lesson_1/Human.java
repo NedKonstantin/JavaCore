@@ -1,22 +1,40 @@
 package com.knedovesov.lesson_1;
 
-public class Human implements Action {
-    protected final String TYPE = "Человек";
+public class Human implements Members {
+    private int maxLength;
+    private int maxJump;
     private String name;
-    private static final int MAXRUN = 300;
-    private static final int MAXJUMP = 1;
+    private boolean checkWin = true;
 
-    public Human(String name) {
+    public Human(String name, int maxLength, int maxJump) {
         this.name = name;
+        this.maxLength = maxLength;
+        this.maxJump = maxJump;
     }
 
     @Override
-    public boolean run(RunTrack runTrack) {
-       return runTrack.getLength() <= MAXRUN;
+    public int getMaxJump() {
+        return maxJump;
     }
 
     @Override
-    public boolean jump(Wall wall) {
-        return wall.getHeight() <= MAXJUMP;
+    public int getMaxLength() {
+        return maxLength;
     }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public boolean getCheckWin() {
+        return checkWin;
+    }
+
+    @Override
+    public void checkWin(boolean checkWin) {
+        this.checkWin = checkWin;
+    }
+
 }
