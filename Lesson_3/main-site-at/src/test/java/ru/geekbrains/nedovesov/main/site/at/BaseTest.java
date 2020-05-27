@@ -2,15 +2,25 @@ package ru.geekbrains.nedovesov.main.site.at;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.util.concurrent.TimeUnit;
 
-public abstract class BaseTest {
-    protected WebDriver driver;
-    protected final String BASE_URL = "https://geekbrains.ru";
+abstract class BaseTest {
+    WebDriver driver;
+    final String BASE_URL = "https://geekbrains.ru";
+    final String CAREER_LINK = "/career";
+    final String TESTS_LINK = "/tests";
+    final String COURSES_LINK = "/courses";
+    final String EVENTS_LINK = "/events";
+    final String TOPICS_LINK = "/topics";
+    final String POSTS_LINK = "/posts";
+
+    void closePopurBanner(){
+        driver.findElement(By.xpath("//div/div/button[*]")).click();
+    }
 
     @BeforeEach
     void setUp() {

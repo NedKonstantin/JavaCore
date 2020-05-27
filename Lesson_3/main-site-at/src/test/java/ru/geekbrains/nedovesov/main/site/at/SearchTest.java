@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SearchTest extends BaseTest {
+class SearchTest extends BaseTest {
 
     @Test
     void searchJavaTest() {

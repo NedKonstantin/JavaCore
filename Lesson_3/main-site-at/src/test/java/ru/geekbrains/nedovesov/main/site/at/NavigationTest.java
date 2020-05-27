@@ -3,18 +3,15 @@ package ru.geekbrains.nedovesov.main.site.at;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import java.util.concurrent.TimeUnit;
 
-public class NavigationTest extends BaseTest {
-    private WebElement navigationItemTest;
+class NavigationTest extends BaseTest {
     private String header;
 
     @Test
     void navigationCareerButtonTest() {
         driver.get(BASE_URL + "/career");
-        navigationItemTest = driver.findElement(By.cssSelector("nav > a[href='/career']"));
+        driver.findElement(By.cssSelector("nav > a[href='/career']")).click();
         // кликаем по элементу
         header = driver.findElement(By.className("gb-header__title")).getText();
         Assertions.assertEquals("Карьера", header);
