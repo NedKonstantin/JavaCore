@@ -1,13 +1,18 @@
 package ru.geekbrains.nedovesov.main.site.at;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.By;
+
 import java.util.concurrent.TimeUnit;
 
 class NavigationTest extends BaseTest {
     private String header;
 
+    @Disabled
     @Test
     void navigationCareerButtonTest() {
         driver.get(BASE_URL + "/career");
@@ -17,6 +22,7 @@ class NavigationTest extends BaseTest {
         Assertions.assertEquals("Карьера", header);
     }
 
+    @Disabled
     @Test
     void navigationTestsButtonTest() {
         driver.get(BASE_URL + "/tests");
@@ -26,6 +32,7 @@ class NavigationTest extends BaseTest {
         Assertions.assertEquals("Тесты", header);
     }
 
+    @Disabled
     @Test
     void navigationCoursesButtonTest() {
         driver.get(BASE_URL + "/courses");
@@ -40,6 +47,7 @@ class NavigationTest extends BaseTest {
         Assertions.assertEquals("Курсы", header);
     }
 
+    @Disabled
     @Test
     void navigationEventsButtonTest() {
         driver.get(BASE_URL + "/events");
@@ -48,6 +56,7 @@ class NavigationTest extends BaseTest {
         Assertions.assertEquals("Вебинары", header);
     }
 
+    @Disabled
     @Test
     void navigationTopicsButtonTest() {
         driver.get(BASE_URL + "/topics");
@@ -56,8 +65,9 @@ class NavigationTest extends BaseTest {
         Assertions.assertEquals("Форум", header);
     }
 
+    @Disabled
     @Test
-    void navigationPostsButtonTest(){
+    void navigationPostsButtonTest() {
         driver.get(BASE_URL + "/posts");
         driver.findElement(By.xpath("//div/div/button[*]")).click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -65,5 +75,19 @@ class NavigationTest extends BaseTest {
         driver.findElement(By.cssSelector("nav > a[href='/posts']")).click();
         header = driver.findElement(By.className("gb-header__title")).getText();
         Assertions.assertEquals("Блог", header);
+    }
+
+    //@Disabled
+    @ParameterizedTest
+    @CsvFileSource(resources = "/navigation_test_data_source.csv", numLinesToSkip = 1)
+    void navigationTest(String baseUrl, String link, String selector, String name) {
+        driver.get(baseUrl + link);
+//        if (link.equals("/posts") || link.equals("/courses")){
+//            driver.findElement(By.xpath("//div/div/button[*]"));
+//            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//        }
+        driver.findElement(By.cssSelector(selector)).click();
+        header = driver.findElement(By.className("gb-header__title")).getText();
+        Assertions.assertEquals(name, header);
     }
 }

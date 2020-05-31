@@ -11,10 +11,14 @@ class SearchTest extends BaseTest {
 
     @Test
     void searchJavaTest() {
+        // Переменная для хранения количества профессий, курсов, вебинаров и т.д.
+        int volumeItem;
+        // Переменная для сравнения
+        boolean whichVolumeItem;
         // Открываем страницу с курсами
         driver.get(BASE_URL + "/courses");
         // Закрываем баннер
-        driver.findElement(By.xpath("//div/div/button[*]")).click();
+//        driver.findElement(By.xpath("//div/div/button[*]"));
 
         WebElement searchButton = driver.findElement(By.cssSelector("ul > li > .show-search-form"));
         searchButton.click();
@@ -37,20 +41,53 @@ class SearchTest extends BaseTest {
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='professions']"));
         // Давайте проверим, что она видна пользователю.
         Assertions.assertTrue(professionsTab.isDisplayed());
+        volumeItem = Integer.parseInt(driver
+                .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='professions'] > span")).getText());
+        whichVolumeItem = volumeItem >= 2;
+        Assertions.assertTrue(whichVolumeItem);
 
         // С остальными элементами поступим по аналогии
         WebElement coursesTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='courses']"));
-        WebElement webinarsTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='webinars']"));
-        WebElement blogsTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='blogs']"));
-        WebElement forumsTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='forums']"));
-        WebElement testsTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='tests']"));
-        WebElement companiesTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='companies']"));
-
         Assertions.assertTrue(coursesTab.isDisplayed());
+        volumeItem = Integer.parseInt(driver
+                .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='courses'] > span")).getText());
+        whichVolumeItem = volumeItem > 15;
+        Assertions.assertTrue(whichVolumeItem);
+
+        WebElement webinarsTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='webinars']"));
         Assertions.assertTrue(webinarsTab.isDisplayed());
+        volumeItem = Integer.parseInt(driver
+                .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='webinars'] > span")).getText());
+        whichVolumeItem = 180 < volumeItem && volumeItem < 300;
+        Assertions.assertTrue(whichVolumeItem);
+
+        WebElement blogsTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='blogs']"));
         Assertions.assertTrue(blogsTab.isDisplayed());
+        volumeItem = Integer.parseInt(driver
+                .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='blogs'] > span")).getText());
+        whichVolumeItem = volumeItem > 300;
+        Assertions.assertTrue(whichVolumeItem);
+
+        WebElement forumsTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='forums']"));
         Assertions.assertTrue(forumsTab.isDisplayed());
+        volumeItem = Integer.parseInt(driver
+                .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='forums'] > span")).getText());
+        whichVolumeItem = volumeItem != 350;
+        Assertions.assertTrue(whichVolumeItem);
+
+        WebElement testsTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='tests']"));
         Assertions.assertTrue(testsTab.isDisplayed());
+        volumeItem = Integer.parseInt(driver
+                .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='tests'] > span")).getText());
+        whichVolumeItem = volumeItem != 0;
+        Assertions.assertTrue(whichVolumeItem);
+
+        WebElement companiesTab = driver.findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='companies']"));
         Assertions.assertTrue(companiesTab.isDisplayed());
+        volumeItem = Integer.parseInt(driver
+                .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='companies'] > span")).getText());
+        whichVolumeItem = volumeItem != 0;
+        Assertions.assertTrue(whichVolumeItem);
+
     }
 }
