@@ -1,4 +1,4 @@
-package ru.geekbrains.main.site.at.junit;
+package ru.geekbrains.nedovesov.main.site.at.junit;
 
 import org.junit.jupiter.api.Test;
 
