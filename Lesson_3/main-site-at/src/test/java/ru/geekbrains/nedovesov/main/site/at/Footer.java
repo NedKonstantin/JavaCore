@@ -1,4 +1,6 @@
 package ru.geekbrains.nedovesov.main.site.at;
 
-public class Footer extends BaseTest{
+import ru.geekbrains.nedovesov.main.site.at.base.BaseTest;
+
+public class Footer extends BaseTest {
 }
