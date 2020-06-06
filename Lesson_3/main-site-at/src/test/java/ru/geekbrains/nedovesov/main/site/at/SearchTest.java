@@ -19,6 +19,12 @@ class SearchTest extends BaseTest {
                 .clickIconSearch()
                 .enterToSearchField("Java")
                 .waitLoadPage()
-                .checkProfessionsTab();
+                .checkProfessionsTab()
+                .checkCoursesTab()
+                .checkWebinarsTab()
+                .checkBlogsTab()
+                .checkForumsTab()
+                .checkTestsTab()
+                .checkCompaniesTab();
     }
 }

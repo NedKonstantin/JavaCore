@@ -1,5 +1,6 @@
 package ru.geekbrains.nedovesov.main.site.at.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,6 +42,7 @@ public class CareerPage extends BasePage {
         navigationForSearch = new NavigationForSearch(driver);
     }
 
+    @Step
     public CareerPage checkProfessionsTab() {
         volumeItem = Integer.parseInt(professionsTab
                 .findElement(By.cssSelector("li > a.search-page-tabs__item[data-tab='professions'] > span"))
@@ -49,6 +51,7 @@ public class CareerPage extends BasePage {
         return this;
     }
 
+    @Step
     public CareerPage checkCoursesTab() {
         volumeItem = Integer.parseInt(coursesTab
                 .findElement(By.cssSelector("li > a.search-page-tabs__item[data-tab='courses'] > span"))
@@ -57,6 +60,7 @@ public class CareerPage extends BasePage {
         return this;
     }
 
+    @Step
     public CareerPage checkWebinarsTab() {
         volumeItem = Integer.parseInt(webinarsTab
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='webinars'] > span"))
@@ -65,6 +69,7 @@ public class CareerPage extends BasePage {
         return this;
     }
 
+    @Step
     public CareerPage checkBlogsTab() {
         volumeItem = Integer.parseInt(blogsTab
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='blogs'] > span"))
@@ -73,6 +78,7 @@ public class CareerPage extends BasePage {
         return this;
     }
 
+    @Step
     public CareerPage checkForumsTab() {
         volumeItem = Integer.parseInt(forumsTab
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='forums'] > span"))
@@ -81,6 +87,7 @@ public class CareerPage extends BasePage {
         return this;
     }
 
+    @Step
     public CareerPage checkTestsTab() {
         volumeItem = Integer.parseInt(testsTab
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='tests'] > span"))
@@ -89,6 +96,7 @@ public class CareerPage extends BasePage {
         return this;
     }
 
+    @Step
     public CareerPage checkCompaniesTab() {
         volumeItem = Integer.parseInt(companiesTab
                 .findElement(By.cssSelector("ul.search-page-tabs > li > a[data-tab='companies'] > span"))
