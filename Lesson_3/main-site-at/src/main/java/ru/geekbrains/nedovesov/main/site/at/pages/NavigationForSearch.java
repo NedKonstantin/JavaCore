@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class NavigationForSearch extends BasePage {
-
     @FindBy (css = "li > a > svg.icon-search")
     private WebElement searchButton;
 
