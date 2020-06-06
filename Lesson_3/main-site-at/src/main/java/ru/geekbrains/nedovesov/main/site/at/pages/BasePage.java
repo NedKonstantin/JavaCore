@@ -13,12 +13,13 @@ public class BasePage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     public BasePage closePopurBanner() {
         driver.findElement(By.xpath("//div/div/button[*]")).click();
         return this;
     }
 
-    public CareerPage waitLoadPage(){
+    public CareerPage waitLoadPage() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("ul.search-page-tabs")));
         return (CareerPage) this;
