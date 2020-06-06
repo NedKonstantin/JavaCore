@@ -3,6 +3,7 @@ package ru.geekbrains.nedovesov.main.site.at;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import ru.geekbrains.nedovesov.main.site.at.base.BaseTest;
 
 class Header extends BaseTest {
     private final String TEST_NAME = "header";
