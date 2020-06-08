@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class BasePage {
     protected WebDriver driver;
 
@@ -19,9 +21,11 @@ public class BasePage {
         return this;
     }
 
-    public CareerPage waitLoadPage() {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("ul.search-page-tabs")));
-        return (CareerPage) this;
+    public BasePage waitLoadPage() {
+        return null;
+    }
+
+    public BasePage checkHeader(String expected) {
+        return null;
     }
 }

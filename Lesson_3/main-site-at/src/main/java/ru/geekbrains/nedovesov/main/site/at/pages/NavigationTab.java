@@ -1,5 +1,6 @@
 package ru.geekbrains.nedovesov.main.site.at.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,6 +30,12 @@ public class NavigationTab extends BasePage {
         super(driver);
     }
 
+    @Override
+    public BasePage waitLoadPage() {
+        return null;
+    }
+
+    @Step("Переход на нужную страницу")
     public Page clickButton(String buttonTitle) {
         switch (buttonTitle) {
             case "Карьера": {

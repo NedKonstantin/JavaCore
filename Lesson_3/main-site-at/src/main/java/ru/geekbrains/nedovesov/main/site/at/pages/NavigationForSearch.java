@@ -22,6 +22,16 @@ public class NavigationForSearch extends BasePage {
         return this;
     }
 
+    @Override
+    public BasePage waitLoadPage() {
+        return null;
+    }
+
+    @Override
+    public BasePage checkHeader(String expected) {
+        return null;
+    }
+
     public NavigationForSearch clickIconSearch(){
         searchButton.click();
         return this;

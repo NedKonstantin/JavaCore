@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -40,6 +42,13 @@ public class CareerPage extends BasePage {
     public CareerPage(WebDriver driver) {
         super(driver);
         navigationForSearch = new NavigationForSearch(driver);
+    }
+
+    @Override
+    public CareerPage waitLoadPage() {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("ul.search-page-tabs")));
+        return this;
     }
 
     @Step("Проверка профессий")
