@@ -6,6 +6,7 @@ import ru.geekbrains.nedovesov.main.site.at.base.BaseTest;
 import ru.geekbrains.nedovesov.main.site.at.pages.LoginPage;
 
 public class LoginTest extends BaseTest {
+   
     @BeforeEach
     public void openSite() {
         driver.get(BASE_URL + LOGIN_LINK);
