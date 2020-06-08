@@ -14,7 +14,7 @@ public class Selection extends BasePage {
     @FindBy(css = "span.gb-course-card__title-text")
     private List<WebElement> coursesSelection;
 
-    @Step("Проверка наличия курса")
+    @Step("Проверка наличия курса {expected}")
     public CoursesPage checkSelection(String expected) {
         boolean available = false;
         for (WebElement webElement : coursesSelection) {

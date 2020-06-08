@@ -22,10 +22,10 @@ public class BasePage {
     }
 
     public BasePage waitLoadPage() {
-        return null;
+        return this;
     }
 
     public BasePage checkHeader(String expected) {
-        return null;
+        return this;
     }
 }

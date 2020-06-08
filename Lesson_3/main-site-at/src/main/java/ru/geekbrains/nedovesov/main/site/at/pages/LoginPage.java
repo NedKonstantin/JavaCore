@@ -35,7 +35,7 @@ public class LoginPage extends BasePage {
     }
 
     @Override
-    @Step("Проверка заголовка")
+    @Step("Проверка заголовка {expected}")
     public LoginPage checkHeader(String expected) {
         assertEquals(expected, pageHeader.getText());
         return this;

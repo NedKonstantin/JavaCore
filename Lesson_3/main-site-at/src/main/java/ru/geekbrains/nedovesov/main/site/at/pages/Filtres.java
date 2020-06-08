@@ -19,7 +19,7 @@ public class Filtres extends BasePage {
     @FindBy(css = "li > div > label")
     private List<WebElement> checkBoxSelection;
 
-    @Step("Выбор чекбокса")
+    @Step("Выбор чекбокса {checkBoxTitle}")
     public CoursesPage chooseCheckBox(String checkBoxTitle) {
         for (WebElement webElement : checkBoxSelection) {
             if (webElement.getText().equals(checkBoxTitle)) {
