@@ -19,6 +19,7 @@ public abstract class BaseTest {
     protected final String EVENTS_LINK = "/events";
     protected final String TOPICS_LINK = "/topics";
     protected final String POSTS_LINK = "/posts";
+    protected final String LOGIN_LINK = "/login";
 
     protected void closePopurBanner() {
         driver.findElement(By.xpath("//div/div/button[*]")).click();
